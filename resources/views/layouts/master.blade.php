@@ -5,7 +5,79 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-
+        <style>
+        *{
+            font-family: sans-serif;
+        }
+        .nav{
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            background: rgba(1, 29, 15, 0.9);
+            box-shadow: 0px 0px 20px 20px rgba(1, 29, 15, 0.74);
+            width: 100vw;
+            height: 11vh;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-flow: row;
+        }
+        .nav #brand a{
+            font-weight: bold;
+            font-size: 42px;
+            line-height: 10px;
+            text-align: center;
+            letter-spacing: 0.1em;
+            color: #80BEA0;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        .nav .item{
+            padding: 0px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-flow: row;
+        }
+        .item li{
+            list-style-type: none;
+            padding: 0px 20px;
+            color: #80BEA0;
+        }
+        button[id="session"]{
+            background: none;
+            outline: none;
+            cursor: pointer;
+            padding: 8px 40px;
+            border: 5px solid #80BEA0;
+            color: #80BEA0;
+            font-weight: 700;
+        }
+        @media only screen and (max-width: 1000px){
+            .nav #brand a{
+                font-weight: bold;
+                font-size: 22px;
+                line-height: 50px;
+                text-align: center;
+                letter-spacing: 0.1em;
+                color: #80BEA0;
+            }
+            .item li{
+                list-style-type: none;
+                padding: 0px 5px;
+            }
+            button[id="session"]{
+                background: none;
+                outline: none;
+                cursor: pointer;
+                padding: 4px 4px;
+                border: 2px solid #80BEA0;
+                color: #80BEA0;
+                font-weight: 700;
+            }
+        }
+        </style>
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -34,16 +106,14 @@
             <a href="/">Treejective</a>
         </span>
         <ul class="item">
-            <li> 
-                @if( Session::get('user') )
-                    <a href='/logout'> <button id="session"> Logout </button> </a>
-                @endif  
-            </li>
             @if( Session::get('user') )
-            <li>
-                {{ $users->username }}'s profile
-            </li>
-            @endif
+                <li> 
+                    <a href='/logout'> <button id="session"> Logout </button> </a>
+                </li>
+                <li>
+                    {{ $users->username }}'s profile
+                </li>
+            @endif  
         </ul>
     </div>
     <body>
