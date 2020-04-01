@@ -37,3 +37,17 @@ Route::get('/login',function(){ return view('Login');})->name('login');
 Route::get('/logout','UserController@logout');
 
 Route::post('/authenticate', 'UserController@loginUser');
+
+// ######## Utkarsh #########
+
+Route::get('/profile/view', [
+    'uses'=>'PostCon@index',
+    'as'=>'profile.view']);
+
+Route::get('/profile/edit', [
+    'uses'=>'PostCon@edit',
+    'as'=>'profile.edit']);
+
+Route::post('/profile/update', [
+    'uses'=>'PostCon@update',
+    'as'=>'profile.update']);

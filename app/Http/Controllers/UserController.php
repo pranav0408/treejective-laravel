@@ -13,7 +13,7 @@ class UserController extends Controller
     			'firstname' => 'bail|required|min:5|max:35|alpha',
     			'lastname' => 'bail|required|min:5|max:35|alpha',
     			'email' => 'bail|required|email',	
-    			'pwd' => 'bail|required|min:8|max:20|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[@!$#%]).*$/',
+    			'pwd' => 'bail|required|min:8|max:20',
     			'confirm_password' => 'bail|required|min:8|max:20|same:pwd'
     		],[
     			'firstname.required' => ' The first name field is required.',
@@ -41,7 +41,12 @@ class UserController extends Controller
 				'email'=> $req->input('email'),
 				'password'=> $password]);
 
-			DB::table('users')->insertGetId(['username'=>$req->username]);
+			DB::table('users')->insertGetId([
+										'username'=>$req->username,
+										'password'=>$password,
+										'full_name'=>$req->input('firstname').' '.$req->input('lastname'),
+										'user_id'=>rand(0,99999999999)
+									]);
 
 			$session_data = [
             		'firstname'=>$req->firstname,

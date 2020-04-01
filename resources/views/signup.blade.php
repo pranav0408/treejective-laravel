@@ -14,7 +14,27 @@
         margin: 0;
         font-family: arial
     }
-
+    body{
+        margin-top: 12vh;
+    }
+    .nav{
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        background: rgba(1, 29, 15, 0.9);
+        box-shadow: 0px 0px 20px 20px rgba(1, 29, 15, 0.74);
+        width: 100vw;
+        height: 8%;
+        padding: 10px;
+    }
+    .nav div a{
+        font-weight: bold;
+        font-size: 42px;
+        line-height: 50px;
+        text-decoration: none;
+        letter-spacing: 0.1em;
+        color: #80BEA0;
+    }
     .form {
         flex: 4;
         display: flex;
@@ -181,6 +201,11 @@
     </style>
 </head>
 <body>
+<div class="nav">
+    <div align="center">
+        <a href="/">Treejective</a>
+    </div>
+</div>
     <div class="wrapper">
         <!-- <div><img id="image" src="https://image.freepik.com/free-photo/beautiful-view-nature-green-leaves-blurred-greenery-tree-background-with-sunlight_50039-612.jpg"></div> -->
         <div id="details">
